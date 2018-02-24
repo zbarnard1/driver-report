@@ -15,4 +15,4 @@ As I approach this project I want to make it as representative of a real-life ap
 
 Testing
 
-In order to make sure my code is fully tested, I will be using TDD to develop this application.  I will write the tests first, ensure they fail for the correct reasons, and then write code to make the test pass.  I'll add supplemental tests as I go for edge-cases and integration tests when it is reasonable to.
+I will be using TDD to develop this application.  This will guide my design of the application, ensure I write code that works, and allow me to refactor without fear of breaking something.  Most of my tests will be unit tests, with a few acceptance tests to test the functionality of the application as a whole.  As with the structure, I don't want to go overboard testing every edge-case, so I will write enough tests that I can be confident in the performance of this application.
