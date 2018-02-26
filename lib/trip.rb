@@ -8,7 +8,7 @@ class Trip
     @driver = driver
     @start_time = Time.parse(start_time)
     @end_time = Time.parse(end_time)
-    @distance = distance
+    @distance = distance.to_i
   end
 
   def mph

@@ -13,9 +13,9 @@ require_relative 'trip'
   end
 
   def reportStats(too_slow, too_fast)
-    stats = {     name: @name,
-              distance: calcDistance(too_slow, too_fast),
-                   mph: calcMph(too_slow, too_fast) }
+    { name: @name,
+      distance: calcDistance(too_slow, too_fast),
+      mph: calcMph(too_slow, too_fast) }
   end
 
   private
@@ -34,6 +34,6 @@ require_relative 'trip'
     sum = trips.inject(0) do |memo, trip|
       trip.mph.between?(too_slow, too_fast) ? memo + trip.mph : memo
     end
-    (sum / trips.count).round
+    trips.count != 0 ? (sum / trips.count).round : nil
   end
 end
