@@ -1,13 +1,13 @@
 RSpec.describe Trip do
   
-  let (:trip) { Trip.new('Dan', '07:15', '07:45', 17.3) }
+  let (:trip) { Trip.new('Dan', '07:15', '07:45', '17.3') }
 
   it "has a driver" do
     expect(trip.driver).to eq('Dan')
   end
 
   it "has a distance" do
-    expect(trip.distance).to eq(17.3)
+    expect(trip.distance).to eq(17)
   end
 
   it "calculates its duration" do
@@ -15,7 +15,7 @@ RSpec.describe Trip do
   end
 
   it "calculates its mph" do
-    expect(trip.mph).to eq(17.3*2)
+    expect(trip.mph).to eq(34)
   end
 
 end
