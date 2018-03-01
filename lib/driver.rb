@@ -8,14 +8,14 @@ require_relative 'trip'
     @name = name
   end
 
-  def recordTrip(name, start_time, end_time, distance)
+  def record_trip(name, start_time, end_time, distance)
     trips << Trip.new(name, start_time, end_time, distance)
   end
 
-  def reportStats(too_slow, too_fast)
+  def report_stats(too_slow, too_fast)
     { name: @name,
-      distance: calcDistance(too_slow, too_fast),
-      mph: calcMph(too_slow, too_fast) }
+      distance: calc_distance(too_slow, too_fast),
+      mph: calc_mph(too_slow, too_fast) }
   end
 
   private
@@ -23,14 +23,14 @@ require_relative 'trip'
     @trips ||= []
   end
 
-  def calcDistance(too_slow, too_fast)
+  def calc_distance(too_slow, too_fast)
     total = trips.inject(0) do |memo, trip|
       trip.mph.between?(too_slow, too_fast) ? memo + trip.distance : memo
     end
     total.round
   end
 
-  def calcMph(too_slow, too_fast)
+  def calc_mph(too_slow, too_fast)
     sum = trips.inject(0) do |memo, trip|
       trip.mph.between?(too_slow, too_fast) ? memo + trip.mph : memo
     end

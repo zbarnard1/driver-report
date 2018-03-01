@@ -7,43 +7,43 @@ class Report
   end
 
   def interpret(line)
-    splitLine = line.split
-    if splitLine.first == 'Driver'
-      splitLine.shift
-      newDriver(*splitLine)
-    elsif splitLine.first == 'Trip'
-      splitLine.shift
-      drivers[splitLine.first][:driver].recordTrip(*splitLine)
+    split_line = line.split
+    if split_line.first == 'Driver'
+      split_line.shift
+      new_driver(*split_line)
+    elsif split_line.first == 'Trip'
+      split_line.shift
+      drivers[split_line.first][:driver].record_trip(*split_line)
     end
   end
 
-  def getData
+  def get_data
     drivers.keys.each do |key|
-      result = drivers[key][:driver].reportStats(TOO_SLOW, TOO_FAST)
-      driverData << result
+      result = drivers[key][:driver].report_stats(TOO_SLOW, TOO_FAST)
+      driver_data << result
     end
   end
 
-  def sortDrivers
-    driverData.sort! { |a, b| a[:distance] <=> b[:distance] }
-    driverData.reverse!
+  def sort_drivers
+    driver_data.sort! { |a, b| a[:distance] <=> b[:distance] }
+    driver_data.reverse!
   end
 
-  def generateReport
-    formattedOutput = ""
-    self.getData
-    sortDrivers
-    driverData.each do |data|
-        formattedOutput << "#{data[:name]}: #{data[:distance]} miles"
+  def generate_report
+    formatted_output = ""
+    get_data
+    sort_drivers
+    driver_data.each do |data|
+        formatted_output << "#{data[:name]}: #{data[:distance]} miles"
       if data[:distance] != 0
-        formattedOutput << " @ #{data[:mph]} mph"
+        formatted_output << " @ #{data[:mph]} mph"
       end
-        formattedOutput << "\n"
+        formatted_output << "\n"
     end
-     puts formattedOutput
+     puts formatted_output
   end
 
-  def newDriver(name)
+  def new_driver(name)
     drivers[name] = { driver: Driver.new(name) }
   end
 
@@ -51,8 +51,7 @@ class Report
     @drivers ||= {}
   end
 
-  def driverData
-    @driverData ||= []
+  def driver_data
+    @driver_data ||= []
   end
-
 end
